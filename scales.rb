@@ -122,9 +122,9 @@ class String
   end
 end
 
-start = $*.first || 'E'
+start = $*.first || 'C'
 puts "Expanded #{start} scale:".underlined
 print_with_indentation(Scale.expand(start))
 puts 
-puts "All #{Scale.new(start).tonality} scales starting with #{start}:".underlined
+puts "#{Scale.new(start).tonality.to_s.capitalize} scales:".underlined
 print_with_indentation(Scale.all(start))
