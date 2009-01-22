@@ -1,4 +1,15 @@
 #! /usr/bin/env ruby
+
+class String
+  def green
+    "\033[0;32m" + self + "\033[0m"
+  end
+  
+  def underlined(char = '=')
+    self + "\n" + char * self.length
+  end
+end
+
 class Scale
   TONES = %w(c c# d d# e f f# g g# a a# b)*2
   STEPS = [2, 2, 1, 2, 2, 2, 1]*2
@@ -90,13 +101,21 @@ class Scale
     @tonic.upcase == @tonic ? :major : :minor
   end
 
-  def pos(tone)
-    tones.index(tone) + 1 rescue nil
+  def pos(tone, options = {})
+    if options[:case_sensitive] == false
+      tones.map { |t| t.downcase }.index(tone.downcase) + 1 rescue nil
+    else
+      tones.index(tone) + 1 rescue nil
+    end
   end
   
-  def to_s(range = 1..7)
+  def to_s(range = 1..7, options = {})
     tones(range).map do |tone|
-      tone.ljust(3)
+      if options[:colored] && options[:colored].include?(tone)
+        tone.ljust(4).green
+      else
+        tone.ljust(4)
+      end
     end.join('  ')
   end
   
@@ -107,18 +126,18 @@ class Scale
   end
 end
 
-
 def print_with_indentation(scales)
+  basis = scales.first
   indent = 0
-  scales.each do |scale|
-    puts ' ' * indent + scale.to_s if scale
-    indent += 5
-  end
-end
-
-class String
-  def underlined(char = '=')
-    self + "\n" + char * self.length
+  scales.compact.each do |scale|
+    pos = basis.pos(scale.tonic, :case_sensitive => false)
+    if pos
+      indent = (pos - 1) * 6
+      puts ' ' * indent + scale.to_s(1..7, :colored => basis.tones) if scale
+    else
+      indent += 3
+      puts ' ' * indent + scale.to_s if scale
+    end
   end
 end
 

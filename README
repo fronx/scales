@@ -4,24 +4,24 @@ scales/bin $ ./scales E
 
 Expanded E scale:
 =================
-E    f#   g#   A    B    c#   D#0
-     f#   G0   A    b    c    D    E  
-          g#   A0   B    c#   d    E    F# 
-               A    b    c#   D    E    f#   G#0
-                    B    c#   d#   E    F#   g#   A#0
-                         c#   D0   E    f#   g    A    B  
+E     f#    g#    A     B     c#    D#0 
+      f#    G0    A     b     c     D     E   
+            g#    A0    B     c#    d     E     F#  
+                  A     b     c#    D     E     f#    G#0 
+                        B     c#    d#    E     F#    g#    A#0 
+                              c#    D0    E     f#    g     A     B   
 
 Major scales:
 =============
-E    f#   g#   A    B    c#   D#0
-     F    g    a    A#   C    d    E0 
-          F#   g#   a#   B    C#   d#   F0 
-               G    a    b    C    D    e    F#0
-                    G#   a#   c    C#   D#   f    G0 
-                         A    b    c#   D    E    f#   G#0
-                              A#   c    d    D#   F    g    A0 
-                                   B    c#   d#   E    F#   g#   A#0
-                                        C    d    e    F    G    a    B0 
-                                             C#   d#   f    F#   G#   a#   C0 
-                                                  D    e    f#   G    A    b    C#0
-                                                       D#   f    g    G#   A#   c    D0
+E     f#    g#    A     B     c#    D#0 
+   F     g     a     A#    C     d     E0  
+      F#    g#    a#    B     C#    d#    F0  
+         G     a     b     C     D     e     F#0 
+            G#    a#    c     C#    D#    f     G0  
+                  A     b     c#    D     E     f#    G#0 
+                     A#    c     d     D#    F     g     A0  
+                        B     c#    d#    E     F#    g#    A#0 
+                           C     d     e     F     G     a     B0  
+                              C#    d#    f     F#    G#    a#    C0  
+                                 D     e     f#    G     A     b     C#0 
+                                    D#    f     g     G#    A#    c     D0                                    
