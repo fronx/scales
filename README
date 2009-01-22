@@ -1,4 +1,4 @@
-shell $ ./scales E
+scales/bin $ ./scales E
 
 # =>
 
@@ -11,8 +11,8 @@ E    f#   g#   A    B    c#   D#0
                     B    c#   d#   E    F#   g#   A#0
                          c#   D0   E    f#   g    A    B  
 
-All major scales starting with E:
-=================================
+Major scales:
+=============
 E    f#   g#   A    B    c#   D#0
      F    g    a    A#   C    d    E0 
           F#   g#   a#   B    C#   d#   F0 
