@@ -1,3 +1,4 @@
+#! /usr/bin/env ruby
 class Scale
   TONES = %w(c c# d d# e f f# g g# a a# b)
   STEPS = [2, 2, 1, 2, 2, 2, 1]
@@ -5,7 +6,7 @@ class Scale
   
   class << self
     TONES.each do |tone|
-      [tone, tone.gsub('#', 'is')].each do |name|
+      [tone, tone.gsub('#', 'is'), tone.upcase, tone.upcase.gsub('#', 'is')].each do |name|
         define_method name do
           self.new(tone)
         end
@@ -14,9 +15,16 @@ class Scale
   end
   
   def initialize(tonic)
-    raise "bad tonic: #{tonic}" unless TONES.include?(tonic)
-    @tonic = tonic
-    @offset = TONES.index(tonic)
+    raise "bad tonic: #{tonic.downcase}" unless TONES.include?(tonic.downcase)
+    @tonic = tonic.downcase
+    @offset = TONES.index(@tonic)
+  end
+  
+  def self.all(start_with = 'c')
+    start = TONES.index(start_with.downcase)
+    (TONES + TONES)[start..(start + 11)].map do |tonic|
+      self.new(tonic)
+    end
   end
   
   def tonic; tone(1); end
@@ -70,11 +78,13 @@ class Scale
   
   def to_s(range = 1..8)
     tones(range).map do |tone|
-      tone.ljust(3)
+      tone.ljust(2)
     end.join('  ')
   end
 end
 
-Scale::TONES.each do |tonic|
-  puts Scale.__send__(tonic).to_s
+indent = 0
+Scale.all(ENV['start'] || 'E').each do |scale|
+  puts ' ' * indent + scale.to_s
+  indent += 2
 end
